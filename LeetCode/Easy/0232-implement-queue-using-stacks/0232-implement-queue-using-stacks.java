@@ -8,6 +8,7 @@ class MyQueue {
         this.temp = new Stack<>();
     }
     
+    
     public void push(int x) {
 
         if(empty()) {
