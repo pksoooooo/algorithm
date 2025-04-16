@@ -8,16 +8,13 @@ class Main {
 
         int N = sc.nextInt();
         char gameName = sc.next().charAt(0);
-
-        Set<String> players = new HashSet<>();
+        Set<String> set = new HashSet<>();
 
         for (int i = 0; i < N; i++) {
-            players.add(sc.next());
+            set.add(sc.next());
         }
 
-        int size = players.size();
-
-        int result = gameName == 'Y' ? size : gameName == 'F' ? size / 2 : size / 3;
+        int result = gameName == 'Y' ? set.size() : gameName == 'F' ? set.size() / 2 : set.size() / 3;
         System.out.println(result);
 
     }
