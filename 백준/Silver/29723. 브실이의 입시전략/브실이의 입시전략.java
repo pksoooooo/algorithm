@@ -38,13 +38,10 @@ class Main {
         }
 
         int min = result;
+        int max = result;
         for (int i = 0; i < (M - K); i++) {
             min += requestSubject.get(keySet.get(i));
-        }
-
-        int max = result;
-        for (int i = keySet.size() - 1; i >= keySet.size() - (M - K); i--) {
-            max += requestSubject.get(keySet.get(i));
+            max += requestSubject.get(keySet.get(keySet.size() - 1 - i));
         }
 
         System.out.println(min + " " + max);
