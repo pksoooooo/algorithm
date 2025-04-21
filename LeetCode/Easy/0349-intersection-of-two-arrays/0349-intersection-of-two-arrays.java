@@ -6,7 +6,7 @@ class Solution {
         }
 
         Set<Integer> num1Set = new HashSet<>();
-        List<Integer> resultList = new ArrayList<>();
+        Set<Integer> resultSet = new HashSet<>();
 
         for(int num : nums1){
             num1Set.add(num);
@@ -14,15 +14,15 @@ class Solution {
 
         for(int num : nums2){
             if(num1Set.contains(num)){
-                resultList.add(num);
-                num1Set.remove(num);
+                resultSet.add(num);
             }
         }
 
-        int[] result = new int[resultList.size()];
+        int[] result = new int[resultSet.size()];
 
-        for(int i = 0; i < resultList.size(); i++){
-            result[i] = resultList.get(i);
+        int count = 0;
+        for(int num : resultSet){
+            result[count++] = num;
         }
 
         return result;
