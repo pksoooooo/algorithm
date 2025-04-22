@@ -4,15 +4,15 @@ class Solution {
         int count = 0;
         Arrays.sort(arr2);
         for (int i = 0; i < arr1.length; i++) {
-            boolean flag = false;
+            boolean isExist = false;
             for (int j = 0; j < arr2.length; j++) {
                 if (Math.abs(arr1[i] - arr2[j]) <= d) {
-                    flag = true;
+                    isExist = true;
                     break;
                 }
 
             }
-            if (!flag) {
+            if (!isExist) {
                 count++;
             }
         }
