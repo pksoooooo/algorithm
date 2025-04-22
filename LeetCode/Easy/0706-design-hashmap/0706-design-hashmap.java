@@ -1,45 +1,42 @@
 class MyHashMap {
 
-    private static class Node {
-        private int key;
-        private int value;
+    public static class Node {
+        private int key, value;
         Node next;
 
-        public Node(int key, int value){
+        public Node(int key, int value) {
             this.key = key;
             this.value = value;
         }
-
     }
 
-    private final int SIZE = 100000;
+    static final int SIZE = 10000;
     private Node[] table;
 
-
     public MyHashMap() {
-        this.table = new Node[SIZE];
+        table = new Node[SIZE];
     }
 
-    private int hash(int key){
+    private int hash(int key) {
         return key % SIZE;
     }
-    
+
     public void put(int key, int value) {
         int index = hash(key);
         Node head = table[index];
 
-        if(head == null){
+        if (head == null) {
             table[index] = new Node(key, value);
+            return;
         }
-        Node curr = head;
 
-        while(curr != null){
-            if(curr.key == key){
+        Node curr = head;
+        while (curr != null) {
+            if (curr.key == key) {
                 curr.value = value;
                 return;
             }
-
-            if(curr.next == null){
+            if (curr.next == null) {
                 curr.next = new Node(key, value);
             }
 
@@ -47,25 +44,25 @@ class MyHashMap {
         }
 
     }
-    
-    public int get(int key) {
 
+    public int get(int key) {
         int index = hash(key);
+
         Node curr = table[index];
 
-        while(curr != null){
-            if(curr.key == key){
+        while (curr != null) {
+            if (curr.key == key) {
                 return curr.value;
             }
-
             curr = curr.next;
         }
+
         return -1;
     }
-    
-    public void remove(int key) {
 
+    public void remove(int key) {
         int index = hash(key);
+
         Node curr = table[index];
         Node prev = null;
 
@@ -78,12 +75,11 @@ class MyHashMap {
                     prev.next = curr.next;
                 }
                 return;
-
             }
 
             prev = curr;
             curr = curr.next;
         }
-        
+
     }
 }
