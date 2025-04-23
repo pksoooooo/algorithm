@@ -7,15 +7,16 @@ class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        char gameName = sc.next().charAt(0);
-        Set<String> set = new HashSet<>();
+        char playGame = sc.next().charAt(0);
+        Set<String> players = new HashSet<>();
 
         for (int i = 0; i < N; i++) {
-            set.add(sc.next());
+            players.add(sc.next());
         }
 
-        int result = gameName == 'Y' ? set.size() : gameName == 'F' ? set.size() / 2 : set.size() / 3;
-        System.out.println(result);
+        int playersSize = players.size();
+
+        System.out.println(playGame == 'Y' ? playersSize : playGame == 'F' ? playersSize / 2 : playersSize / 3);
 
     }
 
