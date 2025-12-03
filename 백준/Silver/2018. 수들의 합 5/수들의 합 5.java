@@ -12,20 +12,20 @@ class Main {
 
         int count = 1;
         int sum = 1;
-        int startIndex = 1;
-        int endIndex = 1;
+        int startIdx = 1;
+        int endIdx = 1;
 
-        while (endIndex != N) {
+        while (endIdx != N) {
             if (sum == N) {
                 count++;
-                endIndex++;
-                sum = sum + endIndex;
-            } else if (sum > N) {
-                sum = sum - startIndex;
-                startIndex++;
-            } else {
-                endIndex++;
-                sum = sum + endIndex;
+                endIdx++;
+                sum += endIdx;
+            }else if(sum > N){
+                sum -= startIdx;
+                startIdx++;
+            }else{
+                endIdx++;
+                sum += endIdx;
             }
         }
 
