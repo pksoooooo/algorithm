@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 class Main {
 
-    static int[] checkArr;
+    static int checkPassword;
     static int[] myArr;
-    static int checkSecret;
+    static int[] checkArr;
 
     public static void main(String[] args) throws IOException {
 
@@ -14,68 +14,70 @@ class Main {
 
         int S = sc.nextInt();
         int P = sc.nextInt();
-        int count = 0;
-        checkArr = new int[4];
-        myArr = new int[4];
-        checkSecret = 0;
-        String DNA = sc.next();
+        String dna = sc.next();
+        char[] dnaArr = dna.toCharArray();
 
-        char[] A = DNA.toCharArray();
+        int count = 0;
+
+        checkPassword = 0;
+        myArr = new int[4];
+        checkArr = new int[4];
 
         for (int i = 0; i < 4; i++) {
             checkArr[i] = sc.nextInt();
             if (checkArr[i] == 0) {
-                checkSecret++;
+                checkPassword++;
             }
         }
 
         for (int i = 0; i < P; i++) {
-            add(A[i]);
+            add(dnaArr[i]);
         }
 
-        if (checkSecret == 4) {
+        if (checkPassword == 4) {
             count++;
         }
 
         for (int endIdx = P; endIdx < S; endIdx++) {
             int startIdx = endIdx - P;
-            add(A[endIdx]);
-            remove(A[startIdx]);
-            if (checkSecret == 4) {
+            add(dnaArr[endIdx]);
+            remove(dnaArr[startIdx]);
+
+            if (checkPassword == 4) {
                 count++;
             }
         }
 
         System.out.println(count);
+
     }
 
     private static void remove(char c) {
         switch (c) {
             case 'A':
                 if (myArr[0] == checkArr[0]) {
-                    checkSecret--;
+                    checkPassword--;
                 }
                 myArr[0]--;
                 break;
             case 'C':
                 if (myArr[1] == checkArr[1]) {
-                    checkSecret--;
+                    checkPassword--;
                 }
                 myArr[1]--;
                 break;
             case 'G':
                 if (myArr[2] == checkArr[2]) {
-                    checkSecret--;
+                    checkPassword--;
                 }
                 myArr[2]--;
                 break;
             case 'T':
                 if (myArr[3] == checkArr[3]) {
-                    checkSecret--;
+                    checkPassword--;
                 }
                 myArr[3]--;
                 break;
-
         }
     }
 
@@ -84,28 +86,27 @@ class Main {
             case 'A':
                 myArr[0]++;
                 if (myArr[0] == checkArr[0]) {
-                    checkSecret++;
+                    checkPassword++;
                 }
                 break;
             case 'C':
                 myArr[1]++;
                 if (myArr[1] == checkArr[1]) {
-                    checkSecret++;
+                    checkPassword++;
                 }
                 break;
             case 'G':
                 myArr[2]++;
                 if (myArr[2] == checkArr[2]) {
-                    checkSecret++;
+                    checkPassword++;
                 }
                 break;
             case 'T':
                 myArr[3]++;
                 if (myArr[3] == checkArr[3]) {
-                    checkSecret++;
+                    checkPassword++;
                 }
                 break;
-
         }
     }
 
