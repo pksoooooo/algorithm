@@ -9,7 +9,6 @@ class Main {
 
         int N = sc.nextInt();
         int M = sc.nextInt();
-
         int[] A = new int[N];
 
         for (int i = 0; i < N; i++) {
@@ -19,11 +18,14 @@ class Main {
         Arrays.sort(A);
 
         int count = 0;
+        int sum = 0;
         int startIdx = 0;
         int endIdx = N - 1;
 
         while (startIdx < endIdx) {
-            int sum = A[startIdx] + A[endIdx];
+            
+            sum = A[startIdx] + A[endIdx];
+            
             if (sum == M) {
                 count++;
                 startIdx++;
@@ -36,6 +38,6 @@ class Main {
         }
 
         System.out.println(count);
-
     }
+
 }
