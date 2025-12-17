@@ -1,28 +1,18 @@
-import java.util.ArrayList;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 class Solution {
     public int[] solution(int[] numbers) {
         
+        Set<Integer> set = new HashSet<>();
         
-        ArrayList<Integer> list = new ArrayList<>();
-        
-        for(int i = 0; i < numbers.length; i++) {
-            for(int j = 0; j < numbers.length; j++) {
-                if(i != j){ 
-                    list.add(numbers[i] + numbers[j]);
-                }
+        for(int i = 0; i < numbers.length-1; i++) {
+            for(int j = i+1; j < numbers.length; j++) {
+                set.add(numbers[i] + numbers[j]);
             }
         }
-        list = list.stream().distinct().sorted().collect(Collectors.toCollection(ArrayList::new));
         
-        int[] answer = new int[list.size()]; 
-        
-        for(int i = 0; i < list.size(); i++){
-            answer[i] = list.get(i);
-        }
-    
-        
-        return answer;
+        return set.stream().sorted().mapToInt(Integer::intValue).toArray();
     }
 }
